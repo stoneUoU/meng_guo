@@ -6,18 +6,23 @@ import 'package:meng_guo/colors/colors.dart';
 import 'package:meng_guo/common/widget/base_extended_image.dart';
 import 'package:meng_guo/common/widget/common_icon_text_button.dart';
 import 'package:meng_guo/common/widget/icon_text.dart';
-import 'package:meng_guo/function/detail/page/detail_page.dart';
 import 'package:meng_guo/function/home/viewmodel/home_list_item_view_model.dart';
-import 'package:menghabit/tool/base/extensions/screen_extension.dart';
 import 'package:menghabit/menghabit.dart';
+import 'package:menghabit/tool/base/extensions/screen_extension.dart';
 import 'package:menghabit/tool/utils/screen_utils.dart';
+
+typedef void OnHomeCommonListItemListener();
 
 class HomeCommonListItem extends StatelessWidget {
   final int index;
   final HomeListContentItemViewModel viewModel;
+  final OnHomeCommonListItemListener onHomeCommonListItemListener;
 
-  const HomeCommonListItem(
-      {Key? key, required this.index, required this.viewModel})
+  HomeCommonListItem(
+      {Key? key,
+      required this.index,
+      required this.viewModel,
+      required this.onHomeCommonListItemListener})
       : super(key: key);
 
   @override
@@ -228,8 +233,9 @@ class HomeCommonListItem extends StatelessWidget {
         ],
       ),
     ).wrapGestureDetector(onTap: () {
-      Navigator.pushNamed(context, DetailPage.sName,
-          arguments: viewModel.threadId);
+      if (this.onHomeCommonListItemListener != null) {
+        this.onHomeCommonListItemListener();
+      }
     });
   }
 

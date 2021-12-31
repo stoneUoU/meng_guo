@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:meng_guo/colors/colors.dart';
 import 'package:meng_guo/function/discover/pages/discover_page.dart';
 import 'package:meng_guo/function/home/pages/home_page.dart';
-import 'package:meng_guo/function/home/viewmodel/home_view_model.dart';
 import 'package:meng_guo/function/login/entity/login_resp_entity.dart';
 import 'package:meng_guo/function/login/pages/login_page.dart';
 import 'package:meng_guo/function/message/pages/message_page.dart';

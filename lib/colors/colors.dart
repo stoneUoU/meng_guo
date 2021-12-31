@@ -23,6 +23,7 @@ const color_FF606266 = Color(0xFF606266);
 const color_FF909399 = Color(0xFF909399);
 const color_FFC0C4CC = Color(0xFFC0C4CC);
 const color_FF1B65B9 = Color(0xFF1B65B9);
+const color_FF4272e0 = Color(0xFF4272e0);
 
 const color_304CD080 = Color(0x4D4CD080);
 const color_FFD1F2DE = Color(0xFFD1F2DE);

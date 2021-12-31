@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:meng_guo/colors/colors.dart';
 import 'package:meng_guo/common/widget/icon_text.dart';
+import 'package:meng_guo/function/detail/page/detail_page.dart';
 import 'package:meng_guo/function/discover/item/discover_hot_list_item.dart';
 import 'package:meng_guo/function/discover/model/discover_model.dart';
 import 'package:meng_guo/function/discover/viewmodel/discover_view_model.dart';
-import 'package:meng_guo/function/home/entity/home_list_resp_entity.dart';
 import 'package:meng_guo/function/home/item/home_common_list_item.dart';
 import 'package:meng_guo/function/home/viewmodel/home_list_item_view_model.dart';
-import 'package:meng_guo/function/home/viewmodel/home_view_model.dart';
-import 'package:meng_guo/function/message/viewmodel/message_view_model.dart';
-import 'package:meng_guo/function/my/viewmodel/my_view_model.dart';
 import 'package:menghabit/menghabit.dart';
 import 'package:menghabit/tool/widget/base/base_scaffold.dart';
-import 'package:menghabit/tool/widget/base_model.dart';
 
 class DiscoverPage extends StatelessWidget {
   static final String sName = "DiscoverPage";
@@ -87,6 +83,10 @@ class _DiscoverViewState extends State<_DiscoverView>
                         return HomeCommonListItem(
                           index: index,
                           viewModel: value.orEmptyList()[index],
+                          onHomeCommonListItemListener: () {
+                            Navigator.pushNamed(context, DetailPage.sName,
+                                arguments: value.orEmptyList()[index].threadId);
+                          },
                         );
                       },
                       itemCount: value.orEmptyList().length,

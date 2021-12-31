@@ -6,7 +6,7 @@ import 'package:meng_guo/common/utils/hi_cache.dart';
 import 'package:meng_guo/config/user_config.dart';
 import 'package:meng_guo/function/login/entity/login_resp_entity.dart';
 import 'package:meng_guo/function/luanch/pages/privacy_policy_detail_page.dart';
-import 'package:meng_guo/meng_guo_home_index_page.dart';
+import 'package:meng_guo/function/luanch/pages/splash_ad_page.dart';
 import 'package:meng_guo/storage/user_storage.dart';
 
 class PrivacyPolicyPage extends StatelessWidget {
@@ -137,7 +137,7 @@ class PrivacyPolicyPage extends StatelessWidget {
                     ),
                     onTap: () {
                       HiCache.getInstance().setBool("isAgree", true);
-                      _fetchHomePage(context);
+                      _fetchSplashAdPage(context);
                     },
                   ),
                 ],
@@ -153,12 +153,12 @@ class PrivacyPolicyPage extends StatelessWidget {
     );
   }
 
-  _fetchHomePage(BuildContext context) {
+  _fetchSplashAdPage(BuildContext context) {
     LoginRespEntity? user = UserStorage.getUser();
     if (user != null) {
       UserConfig.setUserCode(
           user.userId, '${user.tokenType} ${user.accessToken}');
     }
-    Navigator.pushNamed(context, MengGuoHomeIndexPage.sName);
+    Navigator.pushNamed(context, SplashAdPage.sName);
   }
 }
