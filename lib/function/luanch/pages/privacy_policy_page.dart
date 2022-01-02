@@ -2,12 +2,12 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:meng_guo/colors/colors.dart';
-import 'package:meng_guo/common/utils/hi_cache.dart';
 import 'package:meng_guo/config/user_config.dart';
 import 'package:meng_guo/function/login/entity/login_resp_entity.dart';
 import 'package:meng_guo/function/luanch/pages/privacy_policy_detail_page.dart';
 import 'package:meng_guo/function/luanch/pages/splash_ad_page.dart';
 import 'package:meng_guo/storage/user_storage.dart';
+import 'package:menghabit/tool/utils/sp_utils/sp_utils.dart';
 
 class PrivacyPolicyPage extends StatelessWidget {
   static const String sName = "PrivacyPolicyPage";
@@ -136,7 +136,8 @@ class PrivacyPolicyPage extends StatelessWidget {
                       ),
                     ),
                     onTap: () {
-                      HiCache.getInstance().setBool("isAgree", true);
+                      // HiCache.getInstance().setBool("isAgree", true);
+                      SpUtils.putBool("isAgree", true);
                       _fetchSplashAdPage(context);
                     },
                   ),

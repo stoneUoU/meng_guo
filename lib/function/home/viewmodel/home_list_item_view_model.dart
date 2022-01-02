@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:html/parser.dart' show parse;
-import 'package:intl/intl.dart';
-import 'package:meng_guo/colors/colors.dart';
 import 'package:meng_guo/function/home/entity/home_list_resp_entity.dart';
 import 'package:menghabit/menghabit.dart';
 
@@ -31,13 +29,14 @@ class HomeListContentItemViewModel extends HomeListItemViewModel {
   String likeCount = '';
   String commentCount = '';
   List<String> tags = [];
-
   int threadId = 0;
+  bool isAds = false;
 
   HomeListContentItemViewModel(
     HomeListDataEntity entity,
   ) : super(entity) {
     threadId = entity.threadId ?? 0;
+    isAds = entity.isAds ?? false;
     userIcon = entity.user?.avatar ?? '';
     userName = entity.user?.nickname ?? '';
     title = entity.title ?? '';

@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:meng_guo/function/home/api/home_api.dart';
@@ -6,13 +7,13 @@ import 'package:meng_guo/function/home/entity/home_list_req_entity.dart';
 import 'package:meng_guo/function/home/entity/home_list_resp_entity.dart';
 import 'package:meng_guo/function/home/viewmodel/home_list_item_view_model.dart';
 import 'package:meng_guo/generated/l10n.dart';
+import 'package:meng_guo/net/net_extension.dart';
 import 'package:menghabit/tool/base/extensions/collections_extension.dart';
 import 'package:menghabit/tool/base/extensions/language_extension.dart';
 import 'package:menghabit/tool/base/paging/base_list_view_model.dart';
 import 'package:menghabit/tool/base/property/empty_state_model.dart';
 import 'package:menghabit/tool/widget/base_model.dart';
 import 'package:menghabit/tool/widget/paging/paging_load_callback.dart';
-import 'package:meng_guo/net/net_extension.dart';
 
 /// 首页列表 分页
 class HomeListTabViewModel
@@ -40,8 +41,15 @@ class HomeListTabViewModel
       int pageIndex, LoadCallback<HomeListItemViewModel> loadCallback) {
     launch(() async {
       final result = await getHomeList(categoryId, _reqEntity, pageIndex);
-      final data = result.pageData;
-
+      var data = result.pageData;
+      var dataLogic = result.pageData;
+      for (var i = 0; i < dataLogic.orEmptyList().length; i++) {
+        if (i % 5 == 4) {
+          HomeListDataEntity adModel = HomeListDataEntity();
+          adModel.isAds = true;
+          data.orEmptyList().insert(i, adModel);
+        }
+      }
       final list = data?.orEmptyList().map(
         (e) {
           return HomeListContentItemViewModel(e);

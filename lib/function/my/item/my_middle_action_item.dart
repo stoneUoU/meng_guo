@@ -3,6 +3,7 @@ import 'package:meng_guo/colors/colors.dart';
 import 'package:meng_guo/common/widget/common_icon_text_button.dart';
 import 'package:meng_guo/function/my/pages/my_draft_page.dart';
 import 'package:meng_guo/function/my/pages/my_message_page.dart';
+import 'package:meng_guo/function/my/pages/my_setting_page.dart';
 import 'package:meng_guo/function/my/pages/my_store_page.dart';
 import 'package:meng_guo/function/my/viewmodel/my_view_model.dart';
 import 'package:menghabit/menghabit.dart';
@@ -82,7 +83,9 @@ class MyMiddleActionItem extends StatelessWidget {
                 width: (ScreenUtils.screenW() - 60.px) / 4,
                 child: CommonIconTextButton(
                   onTap: () {
-                    viewModel.logout();
+                    Navigator.pushNamed(context, MySettingPage.sName,
+                        arguments: viewModel);
+                    // viewModel.logout();
                   },
                   title: '  设置  ',
                   imagePosition: ButtonImagePosition.top,

@@ -12,6 +12,7 @@ import 'package:meng_guo/function/home/viewmodel/home_list_tab_view_model.dart';
 import 'package:meng_guo/function/home/viewmodel/home_view_model.dart';
 import 'package:menghabit/menghabit.dart';
 import 'package:menghabit/tool/base/paging/base_list_widget.dart';
+import 'package:menghabit/tool/utils/screen_utils.dart';
 import 'package:menghabit/tool/widget/base/base_scaffold.dart';
 
 typedef void HomeListTabListener(HomeListContentItemViewModel viewModel);
@@ -277,15 +278,57 @@ class HomeListTabPage extends StatelessWidget {
               final item = viewModel.items[index];
               Widget widget;
               if (item is HomeListContentItemViewModel) {
-                widget = HomeCommonListItem(
-                  index: index,
-                  viewModel: item,
-                  onHomeCommonListItemListener: () {
-                    if (this.homeListTabListener != null) {
-                      this.homeListTabListener(item);
-                    }
-                  },
-                );
+                if (item.isAds) {
+                  widget = Container(
+                    color: Colors.white,
+                    child: Column(
+                      children: [
+                        FlutterUnionad.nativeAdView(
+                          androidCodeId: "947548703",
+                          iosCodeId: "947544123",
+                          //ios banner广告id 必填
+                          supportDeepLink: true,
+                          //是否支持 DeepLink 选填
+                          expressViewWidth: ScreenUtils.screenW(),
+                          // 期望view 宽度 dp 必填
+                          expressViewHeight: 120.5,
+                          //期望view高度 dp 必填
+                          expressNum: 2,
+                          mIsExpress: true,
+                          //一次请求广告数量 大于1小于3 必填
+                          callBack: FlutterUnionadNativeCallBack(
+                            onShow: () {
+                              print("信息流广告显示");
+                            },
+                            onFail: (error) {
+                              print("信息流广告失败 $error");
+                            },
+                            onDislike: (message) {
+                              print("信息流广告不感兴趣 $message");
+                            },
+                            onClick: () {
+                              print("信息流广告点击");
+                            },
+                          ),
+                        ), //个性化模板信息流广告
+                        Container(
+                          color: color_FFF4F3F8,
+                          height: 3.px,
+                        )
+                      ],
+                    ),
+                  );
+                } else {
+                  widget = HomeCommonListItem(
+                    index: index,
+                    viewModel: item,
+                    onHomeCommonListItemListener: () {
+                      if (this.homeListTabListener != null) {
+                        this.homeListTabListener(item);
+                      }
+                    },
+                  );
+                }
               } else {
                 widget = SizedBox();
               }

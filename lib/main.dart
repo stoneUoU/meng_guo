@@ -10,8 +10,8 @@ import 'package:meng_guo/config/config.dart';
 import 'package:meng_guo/config/language_config.dart';
 import 'package:meng_guo/config/user_config.dart';
 import 'package:meng_guo/function/login/entity/login_resp_entity.dart';
+import 'package:meng_guo/function/luanch/pages/init_register_page.dart';
 import 'package:meng_guo/function/luanch/pages/privacy_policy_page.dart';
-import 'package:meng_guo/function/luanch/pages/splash_ad_page.dart';
 import 'package:meng_guo/provider/count_provider.dart';
 import 'package:meng_guo/router/router_generate.dart';
 import 'package:meng_guo/router/router_observer.dart';
@@ -20,6 +20,7 @@ import 'package:menghabit/menghabit.dart';
 import 'package:menghabit/tool/base/property/empty_constant.dart';
 import 'package:menghabit/tool/base/property/empty_state_model.dart';
 import 'package:menghabit/tool/localizetion/ChineseCupertinoLocalizations.dart';
+import 'package:menghabit/tool/utils/sp_utils/sp_utils.dart';
 import 'package:menghabit/tool/widget/screen/screenutil_init.dart';
 import 'package:oktoast/oktoast.dart';
 
@@ -30,12 +31,12 @@ class NavKey {
 }
 
 void main() async {
+  HiCache.preInit();
   await Config.dispatchRunMainBefore().then((value) {
     Future.delayed(const Duration(milliseconds: 500), () {
       runApp(MyApp());
     });
   });
-
   StatusBarUtils.setUpTransparentStatusBar();
 }
 
@@ -45,28 +46,22 @@ class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    _initPrivacy();
-    _initRegister();
-    _initPermission();
-    return FutureBuilder<HiCache>(
-        //进行初始化
-        future: HiCache.preInit(),
-        builder: (BuildContext context, AsyncSnapshot<HiCache> snapshot) {
-          return OKToast(
-            movingOnWindowChange: false,
-            child: MultiProvider(
-              providers: [
-                ChangeNotifierProvider(create: (_) => CountProvider())
-              ],
-              child: ScreenUtilInit(
-                child: buildMaterialApp(),
-              ),
-            ),
-          );
-        });
+    return OKToast(
+      movingOnWindowChange: false,
+      child: MultiProvider(
+        providers: [ChangeNotifierProvider(create: (_) => CountProvider())],
+        child: ScreenUtilInit(
+          child: buildMaterialApp(),
+        ),
+      ),
+    );
   }
 
   MaterialApp buildMaterialApp() {
+    this._initPermission();
+    this._initPrivacy();
+    this._initRegister();
+    print("OKToastOKToastOKToast");
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         localizationsDelegates: const [
@@ -124,6 +119,7 @@ class MyApp extends StatelessWidget {
           FlutterUnionadNetCode.NETWORK_STATE_WIFI
         ]); //允许直接下载的网络状态集合 选填
     adVersion = await FlutterUnionad.getSDKVersion();
+    print("sdk______${adVersion}");
   }
 
   //隐私权限
@@ -149,8 +145,8 @@ class MyApp extends StatelessWidget {
     }
   }
 
-  void _initPermission() {
-    FlutterUnionad.requestPermissionIfNecessary(
+  void _initPermission() async {
+    await FlutterUnionad.requestPermissionIfNecessary(
       callBack: FlutterUnionadPermissionCallBack(
         notDetermined: () {
           print("main_权限未确定");
@@ -170,10 +166,10 @@ class MyApp extends StatelessWidget {
 }
 
 String fetchLogin() {
-  bool isAgree = HiCache.getInstance().get("isAgree") == null
-      ? false
-      : HiCache.getInstance().get("isAgree") as bool;
-
+  // bool isAgree = HiCache.getInstance().get("isAgree") == null
+  //     ? false
+  //     : HiCache.getInstance().get("isAgree") as bool;
+  bool isAgree = SpUtils.getBool("isAgree");
   LoginRespEntity? user = UserStorage.getUser();
   if (user != null) {
     UserConfig.setUserCode(
@@ -181,7 +177,8 @@ String fetchLogin() {
   }
   // return isAgree ? AdPage.sName : PrivacyPolicyPage.sName;
   // return isAgree ? MengGuoHomeIndexPage.sName : PrivacyPolicyPage.sName;
-  return isAgree ? SplashAdPage.sName : PrivacyPolicyPage.sName;
+  // return isAgree ? SplashAdPage.sName : PrivacyPolicyPage.sName;
+  return isAgree ? InitRegisterPage.sName : PrivacyPolicyPage.sName;
 }
 
 ///初始化缺省页国际化文案

@@ -84,6 +84,8 @@ class HomeListDataEntity with JsonConvert<HomeListDataEntity> {
   HomeListContentEntity? content;
 
   HomeLikeEntity? likeReward;
+
+  bool? isAds;
 }
 
 class HomeListDataUserEntity with JsonConvert<HomeListDataUserEntity> {
