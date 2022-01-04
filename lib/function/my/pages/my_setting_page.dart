@@ -2,11 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:meng_guo/colors/colors.dart';
 import 'package:meng_guo/common/widget/common_highlight_icon_button.dart';
 import 'package:meng_guo/function/my/model/my_model.dart';
+import 'package:meng_guo/function/my/pages/my_about_page.dart';
 import 'package:meng_guo/function/my/viewmodel/my_view_model.dart';
 import 'package:menghabit/tool/base/extensions/screen_extension.dart';
 import 'package:menghabit/tool/base/view_model_provider.dart';
 import 'package:menghabit/tool/utils/screen_utils.dart';
 import 'package:menghabit/tool/widget/base/base_scaffold.dart';
+
+typedef void MySettingPageExitListener();
 
 class MySettingPage extends StatelessWidget {
   static const String sName = "MySettingPage";
@@ -111,34 +114,40 @@ class AboutUsWidget extends StatelessWidget {
   final BuildContext context;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(right: 16.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              Padding(
-                padding: EdgeInsets.all(16),
-                child: Image.asset("assets/images/my/my_about.png",
-                    fit: BoxFit.fill),
-              ),
-              Padding(
-                padding: EdgeInsets.all(0),
-                child: Text(
-                  "关于我们",
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    color: color_FF303133,
-                    fontSize: 16,
-                  ),
+    return InkWell(
+      child: Container(
+        margin: EdgeInsets.only(right: 16.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Image.asset("assets/images/my/my_about.png",
+                      fit: BoxFit.fill),
                 ),
-              )
-            ],
-          ),
-          Image.asset('assets/images/common/arrow_right.png', fit: BoxFit.fill),
-        ],
+                Padding(
+                  padding: EdgeInsets.all(0),
+                  child: Text(
+                    "关于我们",
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: color_FF303133,
+                      fontSize: 16,
+                    ),
+                  ),
+                )
+              ],
+            ),
+            Image.asset('assets/images/common/arrow_right.png',
+                fit: BoxFit.fill),
+          ],
+        ),
       ),
+      onTap: () {
+        Navigator.pushNamed(context, MyAboutPage.sName);
+      },
     );
   }
 }
@@ -176,11 +185,46 @@ class ExitLoginWidget extends StatelessWidget {
               ),
             ),
             onTap: () {
-              this.myViewModel.logout();
+              this.func(() {
+                this.myViewModel.logout();
+              });
             },
-          )
+          ),
+          Container(
+            height: 8.px,
+            width: ScreenUtils.screenW(),
+            color: color_FFF4F3F8,
+          ),
         ],
       ),
     );
+  }
+
+  void func(MySettingPageExitListener listener) {
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('提示'),
+            content: Text('是否退出登录?'),
+            actions: <Widget>[
+              FlatButton(
+                onPressed: () => Navigator.pop(context),
+                child: Text('取消'),
+              ),
+              FlatButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  if (listener != null) {
+                    listener();
+                  }
+                },
+                textColor: color_FF4272e0,
+                child: Text('退出登录'),
+              ),
+            ],
+          );
+        });
   }
 }

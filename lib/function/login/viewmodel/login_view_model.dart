@@ -23,9 +23,6 @@ class LoginViewModel extends BaseViewModel<LoginModel> {
 
   void initialise(BuildContext context) async {
     _context = context;
-    // globalBgColor.value = color_FFF7F9FA;
-    userNameController.text = "UoU";
-    pwdController.text = "demo12345";
     setAppBarShow(false)
         .setShowAppBarBackIcon(false)
         .setAppBarTitle(getLanguage<S>().common_tab_message)
@@ -38,19 +35,27 @@ class LoginViewModel extends BaseViewModel<LoginModel> {
 
   void login() {
     KeyboardUtils.hideByContext(_context);
-
+    if (!reqEntity.isCheckAgreement) {
+      ToastUtils.showShort('请勾选协议！');
+      return;
+    }
+    if (reqEntity.username == null) {
+      ToastUtils.showShort('请输入用户名！');
+      return;
+    }
+    if (reqEntity.password == null) {
+      ToastUtils.showShort('请输入密码！');
+      return;
+    }
     late LoginRespEntity respResults;
     launch(() async {
       showLoadingDialog();
       respResults = await model.login(reqEntity);
-      // UserStorage.putUser(respResults);
-      // UserConfig.setUserCode(respResults.userId, 'Bearer ${respResults.token}');
-
       dismissLoadingDialog();
       UserStorage.putUser(respResults);
       UserConfig.setUserCode(respResults.userId,
           '${respResults.tokenType} ${respResults.accessToken}');
-      ToastUtils.showShort('登录成功');
+      ToastUtils.showShort('登录成功！');
       Future.delayed(Duration(milliseconds: 300), () {
         Navigator.pop(_context, true);
       });

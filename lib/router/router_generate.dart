@@ -10,7 +10,9 @@ import 'package:meng_guo/function/luanch/pages/init_register_page.dart';
 import 'package:meng_guo/function/luanch/pages/privacy_policy_detail_page.dart';
 import 'package:meng_guo/function/luanch/pages/privacy_policy_page.dart';
 import 'package:meng_guo/function/luanch/pages/splash_ad_page.dart';
+import 'package:meng_guo/function/luanch/pages/user_agreement_page.dart';
 import 'package:meng_guo/function/message/pages/message_page.dart';
+import 'package:meng_guo/function/my/pages/my_about_page.dart';
 import 'package:meng_guo/function/my/pages/my_draft_page.dart';
 import 'package:meng_guo/function/my/pages/my_message_page.dart';
 import 'package:meng_guo/function/my/pages/my_page.dart';
@@ -60,8 +62,6 @@ class MengGuoRouterGenerate {
       } else if (routerName == PrivacyPolicyDetailPage.sName) {
         return CustomMaterialPageRoute(
             builder: (context) => PrivacyPolicyDetailPage());
-      } else if (routerName == AdPage.sName) {
-        return CustomMaterialPageRoute(builder: (context) => AdPage());
       } else if (routerName == InitRegisterPage.sName) {
         return CustomMaterialPageRoute(
             builder: (context) => InitRegisterPage());
@@ -70,6 +70,11 @@ class MengGuoRouterGenerate {
             builder: (context) => MySettingPage(
                   myViewModel: arguments as MyViewModel,
                 ));
+      } else if (routerName == MyAboutPage.sName) {
+        return CustomMaterialPageRoute(builder: (context) => MyAboutPage());
+      } else if (routerName == UserAgreementPage.sName) {
+        return CustomMaterialPageRoute(
+            builder: (context) => UserAgreementPage());
       } else {
         return CustomMaterialPageRoute(builder: (context) => LoginPage());
       }

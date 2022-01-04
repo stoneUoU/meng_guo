@@ -1,5 +1,3 @@
-import 'dart:collection';
-
 import 'package:flutter/material.dart';
 import 'package:meng_guo/colors/colors.dart';
 import 'package:meng_guo/function/login/entity/register_req_entity.dart';
@@ -9,7 +7,6 @@ import 'package:meng_guo/generated/l10n.dart';
 import 'package:menghabit/menghabit.dart';
 import 'package:menghabit/tool/utils/keyboard_utils.dart';
 import 'package:menghabit/tool/utils/toast_utils.dart';
-import 'package:menghabit/tool/widget/base_model.dart';
 import 'package:menghabit/tool/widget/base_view_model.dart';
 
 class RegisterViewModel extends BaseViewModel<LoginModel> {
@@ -46,15 +43,35 @@ class RegisterViewModel extends BaseViewModel<LoginModel> {
 
   void register() {
     KeyboardUtils.hideByContext(_context);
-
+    if (reqEntity.username == null) {
+      ToastUtils.showShort('请输入用户名！');
+      return;
+    }
+    if (reqEntity.password == null) {
+      ToastUtils.showShort('请输入密码！');
+      return;
+    }
+    if (reqEntity.password!.length < 6) {
+      ToastUtils.showShort('密码至少需要6位！');
+      return;
+    }
+    if (reqEntity.passwordConfirmation == null) {
+      ToastUtils.showShort('请输入确认密码！');
+      return;
+    }
+    if (reqEntity.passwordConfirmation != reqEntity.password) {
+      ToastUtils.showShort('密码输入不一致，请重新输入!');
+      return;
+    }
+    if (!reqEntity.isCheckAgreement) {
+      ToastUtils.showShort('请勾选协议！');
+      return;
+    }
     launch(() async {
       showLoadingDialog();
       RegisterRespEntity result = await model.register(reqEntity);
-      // UserStorage.putUser(respResults);
-      // UserConfig.setUserCode(respResults.userId, 'Bearer ${respResults.token}');
-
       dismissLoadingDialog();
-      ToastUtils.showShort('注册成功');
+      ToastUtils.showShort('注册成功!');
       Future.delayed(Duration(milliseconds: 300), () {
         Navigator.pop(_context);
       });

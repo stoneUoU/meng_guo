@@ -5,4 +5,5 @@ class RegisterReqEntity with JsonConvert<RegisterReqEntity> {
   String? passwordConfirmation;
   String? username;
   String? nickname;
+  bool isCheckAgreement = false;
 }

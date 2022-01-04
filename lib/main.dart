@@ -10,8 +10,8 @@ import 'package:meng_guo/config/config.dart';
 import 'package:meng_guo/config/language_config.dart';
 import 'package:meng_guo/config/user_config.dart';
 import 'package:meng_guo/function/login/entity/login_resp_entity.dart';
-import 'package:meng_guo/function/luanch/pages/init_register_page.dart';
 import 'package:meng_guo/function/luanch/pages/privacy_policy_page.dart';
+import 'package:meng_guo/function/luanch/pages/splash_ad_page.dart';
 import 'package:meng_guo/provider/count_provider.dart';
 import 'package:meng_guo/router/router_generate.dart';
 import 'package:meng_guo/router/router_observer.dart';
@@ -178,7 +178,7 @@ String fetchLogin() {
   // return isAgree ? AdPage.sName : PrivacyPolicyPage.sName;
   // return isAgree ? MengGuoHomeIndexPage.sName : PrivacyPolicyPage.sName;
   // return isAgree ? SplashAdPage.sName : PrivacyPolicyPage.sName;
-  return isAgree ? InitRegisterPage.sName : PrivacyPolicyPage.sName;
+  return isAgree ? SplashAdPage.sName : PrivacyPolicyPage.sName;
 }
 
 ///初始化缺省页国际化文案

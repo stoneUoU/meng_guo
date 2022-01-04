@@ -1,10 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:meng_guo/colors/colors.dart';
 import 'package:meng_guo/common/widget/common_cycle_button.dart';
 import 'package:meng_guo/common/widget/common_text_field.dart';
 import 'package:meng_guo/function/login/viewmodel/login_view_model.dart';
 import 'package:menghabit/menghabit.dart';
-import 'package:flutter/material.dart';
 
 class LoginInputItem extends StatefulWidget {
   const LoginInputItem({Key? key}) : super(key: key);
