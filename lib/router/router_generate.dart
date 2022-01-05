@@ -5,7 +5,6 @@ import 'package:meng_guo/function/discover/pages/discover_page.dart';
 import 'package:meng_guo/function/home/pages/home_page.dart';
 import 'package:meng_guo/function/login/pages/login_page.dart';
 import 'package:meng_guo/function/login/pages/register_page.dart';
-import 'package:meng_guo/function/luanch/pages/ads/ad_page.dart';
 import 'package:meng_guo/function/luanch/pages/init_register_page.dart';
 import 'package:meng_guo/function/luanch/pages/privacy_policy_detail_page.dart';
 import 'package:meng_guo/function/luanch/pages/privacy_policy_page.dart';

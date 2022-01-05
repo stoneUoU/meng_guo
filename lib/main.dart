@@ -10,8 +10,8 @@ import 'package:meng_guo/config/config.dart';
 import 'package:meng_guo/config/language_config.dart';
 import 'package:meng_guo/config/user_config.dart';
 import 'package:meng_guo/function/login/entity/login_resp_entity.dart';
+import 'package:meng_guo/function/luanch/pages/init_register_page.dart';
 import 'package:meng_guo/function/luanch/pages/privacy_policy_page.dart';
-import 'package:meng_guo/function/luanch/pages/splash_ad_page.dart';
 import 'package:meng_guo/provider/count_provider.dart';
 import 'package:meng_guo/router/router_generate.dart';
 import 'package:meng_guo/router/router_observer.dart';
@@ -61,7 +61,6 @@ class MyApp extends StatelessWidget {
     this._initPermission();
     this._initPrivacy();
     this._initRegister();
-    print("OKToastOKToastOKToast");
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         localizationsDelegates: const [
@@ -102,7 +101,7 @@ class MyApp extends StatelessWidget {
         //穿山甲广告 ios appid 必填
         useTextureView: true,
         //使用TextureView控件播放视频,默认为SurfaceView,当有SurfaceView冲突的场景，可以使用TextureView 选填
-        appName: "萌果资讯",
+        appName: "萌果视频",
         //appname 必填
         allowShowNotify: true,
         //是否允许sdk展示通知栏提示 选填
@@ -178,7 +177,7 @@ String fetchLogin() {
   // return isAgree ? AdPage.sName : PrivacyPolicyPage.sName;
   // return isAgree ? MengGuoHomeIndexPage.sName : PrivacyPolicyPage.sName;
   // return isAgree ? SplashAdPage.sName : PrivacyPolicyPage.sName;
-  return isAgree ? SplashAdPage.sName : PrivacyPolicyPage.sName;
+  return isAgree ? InitRegisterPage.sName : PrivacyPolicyPage.sName;
 }
 
 ///初始化缺省页国际化文案

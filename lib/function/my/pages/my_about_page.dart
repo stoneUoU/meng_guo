@@ -157,7 +157,7 @@ class MyAboutBodyWidget extends StatelessWidget {
           Container(
               margin: EdgeInsets.only(top: 32),
               child: Text(
-                "萌果资讯",
+                "萌果视频",
                 style: TextStyle(
                   color: color_FF303133,
                   fontSize: 18.px,

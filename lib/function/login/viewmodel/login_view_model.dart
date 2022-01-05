@@ -35,16 +35,16 @@ class LoginViewModel extends BaseViewModel<LoginModel> {
 
   void login() {
     KeyboardUtils.hideByContext(_context);
-    if (!reqEntity.isCheckAgreement) {
-      ToastUtils.showShort('请勾选协议！');
-      return;
-    }
     if (reqEntity.username == null) {
       ToastUtils.showShort('请输入用户名！');
       return;
     }
     if (reqEntity.password == null) {
       ToastUtils.showShort('请输入密码！');
+      return;
+    }
+    if (!reqEntity.isCheckAgreement) {
+      ToastUtils.showShort('请勾选协议！');
       return;
     }
     late LoginRespEntity respResults;

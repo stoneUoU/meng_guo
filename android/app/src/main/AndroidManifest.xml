@@ -2,7 +2,7 @@
     package="com.video.meng.guo">
     <application
         android:icon="@mipmap/ic_launcher"
-        android:label="萌果资讯"
+        android:label="萌果视频"
         android:allowBackup="true"
         android:screenOrientation="portrait"
         android:usesCleartextTraffic="true">

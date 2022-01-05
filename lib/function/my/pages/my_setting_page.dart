@@ -7,6 +7,7 @@ import 'package:meng_guo/function/my/viewmodel/my_view_model.dart';
 import 'package:menghabit/tool/base/extensions/screen_extension.dart';
 import 'package:menghabit/tool/base/view_model_provider.dart';
 import 'package:menghabit/tool/utils/screen_utils.dart';
+import 'package:menghabit/tool/utils/toast_utils.dart';
 import 'package:menghabit/tool/widget/base/base_scaffold.dart';
 
 typedef void MySettingPageExitListener();
@@ -114,40 +115,49 @@ class AboutUsWidget extends StatelessWidget {
   final BuildContext context;
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      child: Container(
-        margin: EdgeInsets.only(right: 16.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
+    return Column(
+      children: [
+        InkWell(
+          child: Container(
+            margin: EdgeInsets.only(right: 16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Padding(
-                  padding: EdgeInsets.all(16),
-                  child: Image.asset("assets/images/my/my_about.png",
-                      fit: BoxFit.fill),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(0),
-                  child: Text(
-                    "关于我们",
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: color_FF303133,
-                      fontSize: 16,
+                Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.all(16),
+                      child: Image.asset("assets/images/my/my_about.png",
+                          fit: BoxFit.fill),
                     ),
-                  ),
-                )
+                    Padding(
+                      padding: EdgeInsets.all(0),
+                      child: Text(
+                        "关于我们",
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: color_FF303133,
+                          fontSize: 16,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                Image.asset('assets/images/common/arrow_right.png',
+                    fit: BoxFit.fill),
               ],
             ),
-            Image.asset('assets/images/common/arrow_right.png',
-                fit: BoxFit.fill),
-          ],
+          ),
+          onTap: () {
+            Navigator.pushNamed(context, MyAboutPage.sName);
+          },
         ),
-      ),
-      onTap: () {
-        Navigator.pushNamed(context, MyAboutPage.sName);
-      },
+        Container(
+          height: 8.px,
+          width: ScreenUtils.screenW(),
+          color: color_FFF4F3F8,
+        )
+      ],
     );
   }
 }
@@ -164,11 +174,6 @@ class ExitLoginWidget extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          Container(
-            height: 8.px,
-            width: ScreenUtils.screenW(),
-            color: color_FFF4F3F8,
-          ),
           InkWell(
             child: Container(
               margin: EdgeInsets.all(16.0),
@@ -187,6 +192,8 @@ class ExitLoginWidget extends StatelessWidget {
             onTap: () {
               this.func(() {
                 this.myViewModel.logout();
+                Navigator.pop(context);
+                ToastUtils.showShort('退出成功！');
               });
             },
           ),

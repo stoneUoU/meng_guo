@@ -134,7 +134,7 @@ class _SplashAdPageState extends State<SplashAdPage> {
         //穿山甲广告 ios appid 必填
         useTextureView: true,
         //使用TextureView控件播放视频,默认为SurfaceView,当有SurfaceView冲突的场景，可以使用TextureView 选填
-        appName: "萌果资讯",
+        appName: "萌果视频",
         //appname 必填
         allowShowNotify: true,
         //是否允许sdk展示通知栏提示 选填
@@ -227,7 +227,7 @@ class _SplashAdPageState extends State<SplashAdPage> {
   //                         margin: EdgeInsets.only(right: 16),
   //                       ),
   //                       Text(
-  //                         " 萌果资讯",
+  //                         " 萌果视频",
   //                         style: TextStyle(
   //                           fontSize: 40,
   //                           color: color_FF4272e0,
@@ -318,7 +318,7 @@ class _SplashAdPageState extends State<SplashAdPage> {
                     margin: EdgeInsets.only(right: 16),
                   ),
                   Text(
-                    " 萌果资讯",
+                    " 萌果视频",
                     style: TextStyle(
                       fontSize: 40,
                       color: color_FF4272e0,

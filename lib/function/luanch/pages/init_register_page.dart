@@ -30,7 +30,7 @@ class InitRegisterPage extends StatelessWidget {
                 margin: EdgeInsets.only(right: 16),
               ),
               Text(
-                " 萌果资讯",
+                " 萌果视频",
                 style: TextStyle(
                   fontSize: 40,
                   color: color_FF4272e0,
