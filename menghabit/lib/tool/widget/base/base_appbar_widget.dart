@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:menghabit/menghabit.dart';
 import 'package:menghabit/tool/widget/base_view_model.dart';
 
-class AppBarWidget extends StatelessWidget with PreferredSizeWidget {
+class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   final BaseViewModel appBarProperty;
 
   AppBarWidget(this.appBarProperty);

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:universal_platform/universal_platform.dart';
 
 class PlatformUtils {
   static const MethodChannel _channel = const MethodChannel('chongmeng');
@@ -24,7 +25,7 @@ class PlatformUtils {
   static final bool isWeb = (operatingSystem == "web");
 
   static Future<String> getChannel() async {
-    if (Platform.isIOS) return Future.value("ios");
+    if (UniversalPlatform.isIOS) return Future.value("ios");
     var sp = await SharedPreferences.getInstance();
     String channelName = (await _channel.invokeMethod("getChannel")).toString();
     String? spChannelName = sp.getString("channelName");

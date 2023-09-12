@@ -57,15 +57,15 @@ class ErrorPageState extends State<ErrorPage> {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  new FlatButton(onPressed: () {}, child: Text("Report")),
-                  new SizedBox(
-                    width: 40,
-                  ),
-                  new FlatButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: Text("Back"))
+                  // new FlatButton(onPressed: () {}, child: Text("Report")),
+                  // new SizedBox(
+                  //   width: 40,
+                  // ),
+                  // new FlatButton(
+                  //     onPressed: () {
+                  //       Navigator.of(context).pop();
+                  //     },
+                  //     child: Text("Back"))
                 ],
               )
             ],

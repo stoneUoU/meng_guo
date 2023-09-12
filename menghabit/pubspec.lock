@@ -66,7 +66,7 @@ packages:
     source: hosted
     version: "1.1.1"
   collection:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: collection
       sha256: "4a07be6cb69c84d677a6c3096fcf960cc3285a8330b4603e0d463d15d9bd934c"
@@ -82,23 +82,15 @@ packages:
     source: hosted
     version: "3.0.1"
   crypto:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: crypto
       sha256: cf75650c66c0316274e21d7c43d3dea246273af5955bd94e8184837cd577575c
       url: "https://pub.dev"
     source: hosted
     version: "3.0.1"
-  cupertino_icons:
-    dependency: "direct main"
-    description:
-      name: cupertino_icons
-      sha256: "1989d917fbe8e6b39806207df5a3fdd3d816cbd090fac2ce26fb45e9a71476e5"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.4"
   cupertino_will_pop_scope:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: cupertino_will_pop_scope
       sha256: "5d8fc1d70f47d764017db58fcdd14cbe20dbe4ed06b348d8bda15494cb36648b"
@@ -106,7 +98,7 @@ packages:
     source: hosted
     version: "1.2.0"
   device_info:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: device_info
       sha256: f4a8156cb7b7480d969cb734907d18b333c8f0bc0b1ad0b342cdcecf30d62c48
@@ -122,7 +114,7 @@ packages:
     source: hosted
     version: "2.0.1"
   dio:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: dio
       sha256: a9d76e72985d7087eb7c5e7903224ae52b337131518d127c554b9405936752b8
@@ -130,7 +122,7 @@ packages:
     source: hosted
     version: "5.2.1+1"
   encrypt:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: encrypt
       sha256: "4fd4e4fdc21b9d7d4141823e1e6515cd94e7b8d84749504c232999fba25d9bbb"
@@ -167,7 +159,7 @@ packages:
     source: sdk
     version: "0.0.0"
   flutter_easyrefresh:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: flutter_easyrefresh
       sha256: e645ad471bb8d7b6dbefbb858297d3870ace4f28730a6a94db38fc0438a6ca61
@@ -183,7 +175,7 @@ packages:
     source: hosted
     version: "1.0.4"
   flutter_localizations:
-    dependency: transitive
+    dependency: "direct main"
     description: flutter
     source: sdk
     version: "0.0.0"
@@ -206,7 +198,7 @@ packages:
     source: hosted
     version: "4.0.0"
   intl:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: intl
       sha256: a3715e3bc90294e971cb7dc063fbf3cd9ee0ebf8604ffeafabd9e6f16abbdbe6
@@ -230,7 +222,7 @@ packages:
     source: hosted
     version: "1.0.1"
   logger:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: logger
       sha256: "5076f09225f91dc49289a4ccb92df2eeea9ea01cf7c26d49b3a1f04c6a49eec1"
@@ -238,7 +230,7 @@ packages:
     source: hosted
     version: "1.1.0"
   lottie:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: lottie
       sha256: b8bdd54b488c54068c57d41ae85d02808da09e2bee8b8dd1f59f441e7efa60cd
@@ -261,13 +253,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.2.0"
-  menghabit:
-    dependency: "direct main"
-    description:
-      path: ".."
-      relative: true
-    source: path
-    version: "0.0.1"
   meta:
     dependency: transitive
     description:
@@ -285,7 +270,7 @@ packages:
     source: hosted
     version: "1.0.0"
   oktoast:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: oktoast
       sha256: "7c3df4e40a06f079b9971ee42de9f4413768a4acdf65656dffa82c636cd52ce8"
@@ -293,7 +278,7 @@ packages:
     source: hosted
     version: "3.1.5"
   package_info:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: package_info
       sha256: "6c07d9d82c69e16afeeeeb6866fe43985a20b3b50df243091bfc4a4ad2b03b75"
@@ -309,7 +294,7 @@ packages:
     source: hosted
     version: "1.8.3"
   path_provider:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: path_provider
       sha256: e92dee4d38a9044605cb3fb253e9b46eb9375dfcad4515d0379b44ac90797568
@@ -397,7 +382,7 @@ packages:
     source: hosted
     version: "4.2.4"
   provider:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: provider
       sha256: "7896193cf752c40ba7f7732a95264319a787871e5d628225357f5c909182bc06"
@@ -413,7 +398,7 @@ packages:
     source: hosted
     version: "3.0.1+1"
   shared_preferences:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: shared_preferences
       sha256: "1cd0c3c0be0826eb52362ab018a81eed13b616ad9a52548c6ceb1bb349e6b6eb"
@@ -490,7 +475,7 @@ packages:
     source: hosted
     version: "1.9.1"
   sprintf:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: sprintf
       sha256: "936056f5ed53a4c69a1446b78434a24b9264cac67da4c98b39403e8f5d9fc526"
@@ -538,7 +523,7 @@ packages:
     source: hosted
     version: "0.5.1"
   tuple:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: tuple
       sha256: fe3ae4f0dca3f9aac0888e2e0d117b642ce283a82d7017b54136290c0a3b0dd3
@@ -554,7 +539,7 @@ packages:
     source: hosted
     version: "1.3.0"
   universal_platform:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: universal_platform
       sha256: d315be0f6641898b280ffa34e2ddb14f3d12b1a37882557869646e0cc363d0cc
@@ -562,7 +547,7 @@ packages:
     source: hosted
     version: "1.0.0+1"
   url_launcher:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: url_launcher
       sha256: "2d9de5efddbd134ee68d73d0735e7477c00bcbf1ee91afa37514d6c876d38587"

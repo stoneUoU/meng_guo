@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_unionad/flutter_unionad.dart';
@@ -50,7 +49,9 @@ class MyApp extends StatelessWidget {
       movingOnWindowChange: false,
       child: MultiProvider(
         providers: [ChangeNotifierProvider(create: (_) => CountProvider())],
-        child: ScreenUtilInit(
+        child: ScreenUtilInits(
+          // designSize: const Size(390, 750),
+          // splitScreenMode: false,
           child: buildMaterialApp(),
         ),
       ),

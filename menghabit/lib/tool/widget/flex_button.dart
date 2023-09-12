@@ -29,11 +29,9 @@ class BaseFlexButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new RaisedButton(
-        padding: new EdgeInsets.only(
-            left: 20.0, top: 10.0, right: 20.0, bottom: 10.0),
-        textColor: textColor,
-        color: color,
+    return Container(padding: new EdgeInsets.only(
+        left: 20.0, top: 10.0, right: 20.0, bottom: 10.0),child: new ElevatedButton(
+        style: ButtonStyle(backgroundColor:MaterialStateProperty.all(color),foregroundColor:MaterialStateProperty.all(textColor )),
         child: new Flex(
           mainAxisAlignment: mainAxisAlignment,
           direction: Axis.horizontal,
@@ -49,6 +47,6 @@ class BaseFlexButton extends StatelessWidget {
         ),
         onPressed: () {
           this.onPress.call();
-        });
+        }),);
   }
 }

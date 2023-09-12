@@ -60,22 +60,22 @@ class HttpError {
 
   HttpError.checkNetError(dynamic error, {bool ignoreToast = false}) {
     //声明一个调用对象，需要把kotlin中注册的ChannelName传入构造函数
-    if (error is DioError) {
-      message = error.message;
+    if (error is DioException) {
+      message = error.message.toString();
       switch (error.type) {
-        case DioErrorType.connectTimeout:
+        case DioExceptionType.connectionTimeout:
           code = CONNECT_TIMEOUT;
           message = netException;
           break;
-        case DioErrorType.receiveTimeout:
+        case DioExceptionType.receiveTimeout:
           code = RECEIVE_TIMEOUT;
           message = netException;
           break;
-        case DioErrorType.sendTimeout:
+        case DioExceptionType.sendTimeout:
           code = SEND_TIMEOUT;
           message = netException;
           break;
-        case DioErrorType.response:
+        case DioExceptionType.badResponse:
           var statusCode = error.response?.statusCode;
           if (statusCode == HttpStatus.unauthorized) {
             // go2Login();
@@ -84,10 +84,10 @@ class HttpError {
           code = statusCode.toString();
           message = netException;
           break;
-        case DioErrorType.cancel:
+        case DioExceptionType.cancel:
           code = CANCEL;
           break;
-        case DioErrorType.other:
+        case DioExceptionType.unknown:
           code = UNKNOWN;
           message = netException;
           break;

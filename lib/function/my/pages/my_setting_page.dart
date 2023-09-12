@@ -216,19 +216,21 @@ class ExitLoginWidget extends StatelessWidget {
             title: Text('提示'),
             content: Text('是否退出登录?'),
             actions: <Widget>[
-              FlatButton(
+              TextButton(
                 onPressed: () => Navigator.pop(context),
                 child: Text('取消'),
               ),
-              FlatButton(
+              TextButton(
                 onPressed: () {
                   Navigator.pop(context);
                   if (listener != null) {
                     listener();
                   }
                 },
-                textColor: color_FF4272e0,
-                child: Text('退出登录'),
+                child: Text(
+                  '退出登录',
+                  style: TextStyle(color: color_FF4272e0),
+                ),
               ),
             ],
           );

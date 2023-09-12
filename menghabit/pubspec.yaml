@@ -24,11 +24,11 @@ dependencies:
   crypto: ^3.0.1
   cupertino_will_pop_scope: ^1.1.0
 
-  intl: ^0.17.0
+  intl: ^0.18.0
 
-  lottie: ^1.0.1
+  lottie: ^2.6.0
   flutter_easyrefresh: ^2.2.0
-  dio: ^4.0.0
+  dio: ^5.1.0
   flutter_localizations:
     sdk: flutter
   shared_preferences: ^2.0.5
@@ -36,6 +36,7 @@ dependencies:
   logger: ^1.0.0
   device_info: ^2.0.0
   oktoast: ^3.0.0
+  universal_platform: ^1.0.0+1
 #  extended_text: ^5.0.4
 
 dev_dependencies:

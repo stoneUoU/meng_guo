@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:menghabit/tool/utils/screen_utils.dart';
 
-class ScreenUtilInit extends StatelessWidget {
+class ScreenUtilInits extends StatelessWidget {
   /// A helper widget that initializes [ScreenUtil]
-  ScreenUtilInit({
+  ScreenUtilInits({
     required this.child,
     this.designSize = 375,
     Key? key,

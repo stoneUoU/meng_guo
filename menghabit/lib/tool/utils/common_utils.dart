@@ -1,14 +1,13 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:device_info/device_info.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:menghabit/tool/utils/custom_activity_indicator.dart';
+import 'package:lottie/lottie.dart';
 import 'package:menghabit/menghabit.dart';
 import 'package:menghabit/tool/constants/colors.dart';
+import 'package:menghabit/tool/utils/custom_activity_indicator.dart';
 import 'package:menghabit/tool/widget/flex_button.dart';
-import 'package:lottie/lottie.dart';
+import 'package:universal_platform/universal_platform.dart';
 
 /// 通用逻辑
 
@@ -123,7 +122,7 @@ class CommonUtils {
   ///获取设备信息
   static Future<String> getDeviceInfo() async {
     DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-    if (Platform.isAndroid) {
+    if (UniversalPlatform.isAndroid) {
       AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
       return androidInfo.androidId;
     }

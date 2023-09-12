@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:menghabit/tool/base/material/language_utils.dart';
-// import 'package:menghabit/tool/base/material/language_utils.dart';
 
 /// Desc:  多语言适配
 /// <p>

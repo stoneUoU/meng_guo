@@ -1,13 +1,14 @@
 import 'dart:core';
 import 'dart:io';
 
-import 'package:dio/adapter.dart';
 import 'package:dio/dio.dart';
+import 'package:dio/io.dart';
 import 'package:menghabit/tool/base/request/interceptor/token_interceptor.dart';
 import 'package:menghabit/tool/constant_config.dart';
 import 'package:menghabit/tool/constants/constants.dart';
 import 'package:menghabit/tool/constants/http_constants.dart';
 import 'package:menghabit/tool/network/system_utils.dart';
+
 // import 'package:menghabit/tool/utils/platform_utils.dart';
 
 import 'http_error.dart';
@@ -31,8 +32,8 @@ class VvRequestClient {
     if (_client == null) {
       var options = BaseOptions(
         baseUrl: baseUrl,
-        connectTimeout: CONNECT_TIMEOUT,
-        receiveTimeout: RECEIVE_TIMEOUT,
+        connectTimeout: Duration(milliseconds: CONNECT_TIMEOUT),
+        receiveTimeout: Duration(milliseconds: RECEIVE_TIMEOUT),
         headers: {
           // HttpHeaders.userAgentHeader: userAgent,
           HttpHeaders.contentTypeHeader: contentType,
