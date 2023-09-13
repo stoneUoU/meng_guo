@@ -1,19 +1,11 @@
-import 'dart:collection';
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:meng_guo/colors/colors.dart';
 import 'package:meng_guo/common/dialog/category_select_bottom_dialog.dart';
 import 'package:meng_guo/common/utils/image_compress_utils.dart';
 import 'package:meng_guo/common/widget/common_permission_handler.dart';
-import 'package:meng_guo/function/detail/entity/detail_comment_resp_entity.dart';
-import 'package:meng_guo/function/detail/entity/detail_info_resp_entity.dart';
-import 'package:meng_guo/function/detail/model/detail_model.dart';
-import 'package:meng_guo/function/discover/model/discover_model.dart';
 import 'package:meng_guo/function/home/entity/emoji_list_resp_entity.dart';
 import 'package:meng_guo/function/home/entity/home_category_list_resp_entity.dart';
-import 'package:meng_guo/function/home/entity/home_list_resp_entity.dart';
-import 'package:meng_guo/function/home/viewmodel/home_list_item_view_model.dart';
 import 'package:meng_guo/function/login/entity/login_resp_entity.dart';
 import 'package:meng_guo/function/publish/entity/image_resp_entity.dart';
 import 'package:meng_guo/function/publish/entity/publish_req_entity.dart';
@@ -27,7 +19,6 @@ import 'package:menghabit/tool/base/property/empty_state_model.dart';
 import 'package:menghabit/tool/utils/common_utils.dart';
 import 'package:menghabit/tool/utils/keyboard_utils.dart';
 import 'package:menghabit/tool/utils/toast_utils.dart';
-import 'package:menghabit/tool/widget/base_model.dart';
 import 'package:menghabit/tool/widget/base_view_model.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:wechat_assets_picker/wechat_assets_picker.dart';
@@ -137,8 +128,7 @@ class PublishViewModel extends BaseViewModel<PublishModel> {
     PermissionHelper.check(
         context, BuildConfig.isIos ? Permission.photos : Permission.storage,
         onSuccess: () async {
-      final List<AssetEntity>? assets =
-          await AssetPicker.pickAssets(context, maxAssets: 1);
+      final List<AssetEntity>? assets = await AssetPicker.pickAssets(context);
       if (assets?.first != null) {
         _file = await assets!.first.file;
         if (_file != null) {

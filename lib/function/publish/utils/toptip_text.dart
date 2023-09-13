@@ -1,5 +1,4 @@
 import 'package:extended_text_library/extended_text_library.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class TopTipText extends SpecialText {
@@ -14,7 +13,7 @@ class TopTipText extends SpecialText {
   @override
   InlineSpan finishText() {
     final TextStyle? textStyle =
-        this.textStyle.copyWith(color: Colors.blue, fontSize: 16.0);
+        this.textStyle?.copyWith(color: Colors.blue, fontSize: 16.0);
 
     final String TopTipText = toString();
 

@@ -1,6 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:meng_guo/colors/colors.dart';
 import 'package:menghabit/menghabit.dart';
-import 'package:flutter/material.dart';
 
 class CommonSearchAppBar extends StatefulWidget implements PreferredSizeWidget {
   /// 输入框占位文本
@@ -104,7 +104,6 @@ class _CommonSearchAppBarState extends State<CommonSearchAppBar>
     return AppBar(
       titleSpacing: 0,
       elevation: 0,
-      brightness: widget.brightness,
       automaticallyImplyLeading: false,
       backgroundColor: Colors.white,
       title: Stack(

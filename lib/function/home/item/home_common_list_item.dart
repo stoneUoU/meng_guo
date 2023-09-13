@@ -1,6 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/painting.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:meng_guo/colors/colors.dart';
 import 'package:meng_guo/common/widget/base_extended_image.dart';
@@ -8,7 +6,6 @@ import 'package:meng_guo/common/widget/common_icon_text_button.dart';
 import 'package:meng_guo/common/widget/icon_text.dart';
 import 'package:meng_guo/function/home/viewmodel/home_list_item_view_model.dart';
 import 'package:menghabit/menghabit.dart';
-import 'package:menghabit/tool/base/extensions/screen_extension.dart';
 import 'package:menghabit/tool/utils/screen_utils.dart';
 
 typedef void OnHomeCommonListItemListener();
@@ -39,7 +36,7 @@ class HomeCommonListItem extends StatelessWidget {
       //     color: Colors.red,
       //   ),
       // },
-      tagsList: Html.tags,
+      // tagsList: Html.tags,
     );
 
     return Container(

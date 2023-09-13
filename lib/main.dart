@@ -32,6 +32,7 @@ class NavKey {
 void main() async {
   HiCache.preInit();
   await Config.dispatchRunMainBefore().then((value) {
+    WidgetsFlutterBinding.ensureInitialized();
     Future.delayed(const Duration(milliseconds: 500), () {
       runApp(MyApp());
     });
