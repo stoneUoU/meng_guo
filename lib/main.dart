@@ -1,4 +1,6 @@
+import 'dart:async';
 import 'dart:io';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -31,13 +33,56 @@ class NavKey {
 
 void main() async {
   HiCache.preInit();
-  await Config.dispatchRunMainBefore().then((value) {
-    WidgetsFlutterBinding.ensureInitialized();
-    Future.delayed(const Duration(milliseconds: 500), () {
-      runApp(MyApp());
+  if (window.physicalSize.isEmpty) {
+    window.onMetricsChanged = () async {
+      //在回调中，size仍然有可能是0
+      if (!window.physicalSize.isEmpty) {
+        window.onMetricsChanged = null;
+        await waitScreenSizeAvailable(); //引入上面那段代码
+        // runApp(MyApp());
+        await Config.dispatchRunMainBefore().then((value) {
+          WidgetsFlutterBinding.ensureInitialized();
+          Future.delayed(const Duration(milliseconds: 500), () {
+            runApp(MyApp());
+            StatusBarUtils.setUpTransparentStatusBar();
+          });
+        });
+      }
+    };
+  } else {
+    await waitScreenSizeAvailable(); //引入上面那段代码
+    await Config.dispatchRunMainBefore().then((value) {
+      Future.delayed(const Duration(milliseconds: 500), () {
+        runApp(MyApp());
+        StatusBarUtils.setUpTransparentStatusBar();
+      });
     });
-  });
-  StatusBarUtils.setUpTransparentStatusBar();
+  }
+}
+
+Future<void> waitScreenSizeAvailable() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  if (!_hasScreenSize) {
+    var observer = _Observer();
+    WidgetsBinding.instance.addObserver(observer);
+    await observer.hasScreenSize;
+    WidgetsBinding.instance.removeObserver(observer);
+  }
+}
+
+bool get _hasScreenSize => !window.physicalSize.isEmpty;
+
+class _Observer extends WidgetsBindingObserver {
+  final _screenSizeCompleter = Completer<void>();
+
+  Future<void> get hasScreenSize => _screenSizeCompleter.future;
+
+  @override
+  void didChangeMetrics() {
+    if (!_screenSizeCompleter.isCompleted && _hasScreenSize) {
+      _screenSizeCompleter.complete();
+    }
+  }
 }
 
 class MyApp extends StatelessWidget {

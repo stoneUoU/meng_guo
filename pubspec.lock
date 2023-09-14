@@ -157,18 +157,18 @@ packages:
     dependency: "direct main"
     description:
       name: extended_text_field
-      sha256: "6cf8c090de4dc1e309cf3b24cb9448d7463c6c17926b628cf0954631bf4e56db"
+      sha256: "893f61eff66157cbf14764f08092730fc3ff8987e7f1e92f618b007226be9bda"
       url: "https://pub.dev"
     source: hosted
-    version: "12.0.0"
+    version: "12.1.0"
   extended_text_library:
     dependency: transitive
     description:
       name: extended_text_library
-      sha256: c06fbd8e3b6eedadf50cd6c109bbbd80921a6c43e4422d3b4ec9d4cb36ce4555
+      sha256: f6ae456324ff6ba3f9fe560a5c12f51ec02c5f463ef5a02bf165b678f049d547
       url: "https://pub.dev"
     source: hosted
-    version: "11.0.2"
+    version: "11.1.0"
   fake_async:
     dependency: transitive
     description:
