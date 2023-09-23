@@ -5,7 +5,8 @@
         android:label="萌果视频"
         android:allowBackup="true"
         android:screenOrientation="portrait"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
